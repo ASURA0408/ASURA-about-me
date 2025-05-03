@@ -1,5 +1,103 @@
-<html>
-  <body>
-    hello
-  </body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASURA</title>
+  <style>
+    /* 背景グラデーションアニメ */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(-45deg, #1a1a1a, #4d4d4d, #1a1a1a);
+      background-size: 600% 600%;
+      animation: gradientMove 10s ease infinite;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 中央下のASURA */
+    .asura-text {
+      position: fixed;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: red;
+      font-size: 3rem;
+      font-weight: bold;
+      animation: fadeInUp 3s ease-out infinite alternate;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0.3;
+        transform: translateX(-50%) translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    /* レスポンシブ調整 */
+    @media (max-width: 768px) {
+      .asura-text {
+        font-size: 2rem;
+      }
+    }
+
+    /* その他アニメーションオブジェクト（デコ） */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .circle:nth-child(1) {
+      width: 100px; height: 100px;
+      top: 10%; left: 10%;
+      animation-delay: 0s;
+    }
+
+    .circle:nth-child(2) {
+      width: 150px; height: 150px;
+      top: 50%; left: 80%;
+      animation-delay: 2s;
+    }
+
+    .circle:nth-child(3) {
+      width: 60px; height: 60px;
+      top: 80%; left: 20%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- アニメーションデコ -->
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+  <!-- 中央下の赤いASURA -->
+  <div class="asura-text">ASURA</div>
+</body>
 </html>
